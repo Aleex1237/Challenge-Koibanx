@@ -4,13 +4,19 @@ mongoose.Promise = Promise;
 
 const express = require('express')
 const app = express()
+const indexRouter = require('./routes');
+
 const dotenv = require('dotenv');
 dotenv.config();
 const config = require('config');
 mongoose.connect('mongodb://' + config.get('mongodb.address') + '/' + config.get('mongodb.dbname'), { useNewUrlParser: true, useUnifiedTopology: true });
 require('./utils/initializer').init()
 
-app.use('/api', require('./routes/stores'));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+
+
+app.use('/api', indexRouter);
 
 // Start the server
 app.listen(config.get('port'));
