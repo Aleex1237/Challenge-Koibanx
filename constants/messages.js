@@ -10,6 +10,8 @@ const NO_TOKEN = 'There is no token';
 const INVALID_TOKEN = 'The token is invalid';
 const TOKEN_NOT_GENERATED = 'The token couldn\'t be generated';
 
+const EMAIL_NOT_FOUND = "The email doesn't exist";
+const INVALID_EMAIL = 'The email entered is not valid';
 
 module.exports = {
   NOT_FOUND_ERROR,
@@ -20,6 +22,8 @@ module.exports = {
   RESPONSE_OK_NO_CONTENT,
   UNAUTHORIZED_USER_CREDENTIALS,
   FORBIDDEN,
+  EMAIL_NOT_FOUND,
+  INVALID_EMAIL,
   NO_TOKEN,
   INVALID_TOKEN,
   TOKEN_NOT_GENERATED,
