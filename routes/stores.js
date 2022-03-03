@@ -2,10 +2,12 @@ const logger = require('../utils/logger');
 const router = require('express').Router();
 
 const authHeader = require('../middlewares/auth');
-
+const store = require('../validations/store');
 const storeControllers = require('../controllers/stores');
 
-router.get('/', authHeader.auth ,storeControllers.getAll);
+router.get('/', authHeader.auth, storeControllers.getAll);
+
+router.post('/', store.checkBody, authHeader.auth, storeControllers.create);
   
 
 /* router.route('/stores')
