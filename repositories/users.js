@@ -8,4 +8,10 @@ const getByEmail = async (email) => {
     return user;
 }
 
-module.exports = { getByEmail };
+const getById = async (id) => {
+    const user = await User.findById(id);
+
+    return user;
+}
+
+module.exports = { getByEmail, getById };
