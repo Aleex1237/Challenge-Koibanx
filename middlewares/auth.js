@@ -12,7 +12,6 @@ const auth = async (req, res, next) => {
         const token = req.headers.authorization.split(' ')[1];
     
         const dataDecoded = Buffer.from(token, 'base64').toString().split(':');
-        console.log(dataDecoded);
     
         const user = await authService.getUserById(dataDecoded[0]);
     
