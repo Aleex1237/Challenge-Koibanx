@@ -16,7 +16,7 @@ const checkUser = async (email, password) => {
     const comparedPassword = bcrypt.compareSync(password, user[0].password);
 
     if (comparedPassword !== true) {
-        const error = new Error(messages.NO_MATCH_USER);
+        const error = new Error(messages.PASSWORD_INVALID);
         error.status = statusCode.NO_USER_CREDENTIALS;
         throw error;
     }
