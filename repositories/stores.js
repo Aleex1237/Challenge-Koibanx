@@ -1,4 +1,3 @@
-require('../app');
 const Store = require('../models/store');
 
 
@@ -17,7 +16,7 @@ const getCount = async () => {
 }
 
 const create = async (data) => {
-    const {name, cuit, currentBalance, lastSale, concepts } = data;
+    const { name, cuit, currentBalance, lastSale, concepts } = data;
 
     const note = await Store.create({
         name,
