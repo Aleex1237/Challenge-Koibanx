@@ -1,0 +1,167 @@
+{
+	"info": {
+		"_postman_id": "eea2643d-5192-4745-ac04-b289dd733c3e",
+		"name": "Koibanx",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Login User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "email",
+							"value": "test@koibanx.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "admin",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/auth",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"auth"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetAll Stores",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3000/api/stores?page=2&limit=10",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"stores"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "2"
+						},
+						{
+							"key": "limit",
+							"value": "10"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Store",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "Koibanx",
+							"type": "text"
+						},
+						{
+							"key": "cuit",
+							"value": "112233",
+							"type": "text"
+						},
+						{
+							"key": "currentBalance",
+							"value": "10000.50",
+							"type": "text"
+						},
+						{
+							"key": "lastSale",
+							"value": "2001/01/02 15:14:00",
+							"type": "text"
+						},
+						{
+							"key": "concept1",
+							"value": "concepto 1",
+							"type": "text"
+						},
+						{
+							"key": "concept2",
+							"value": "concepto 2",
+							"type": "text"
+						},
+						{
+							"key": "concept3",
+							"value": "concepto 3",
+							"type": "text"
+						},
+						{
+							"key": "concept4",
+							"value": "concepto 4",
+							"type": "text"
+						},
+						{
+							"key": "concept5",
+							"value": "concepto 5",
+							"type": "text"
+						},
+						{
+							"key": "concept6",
+							"value": "concepto 6",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/stores",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"stores"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
