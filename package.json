@@ -4,8 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "run": "node $NODE_DEBUG_OPTION app.js",
-    "start": "node app.js",
+    "start": "node $NODE_DEBUG_OPTION app.js",
     "dev": "nodemon app.js",
     "test": "mocha --reporter spec"
   },
