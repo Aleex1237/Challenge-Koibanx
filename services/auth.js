@@ -5,7 +5,7 @@ const statusCode = require('../constants/statusCodes');
 const usersRepository = require('../repositories/users');
 
 const checkUser = async (email, password) => {
-    
+
     const user = await usersRepository.getByEmail(email);
     if (user.length === 0) {
         const error = new Error(messages.EMAIL_NOT_FOUND);
@@ -23,7 +23,7 @@ const checkUser = async (email, password) => {
 
     const token = Buffer.from(`${user[0].id}:${password}`).toString('base64');
 
-    return { user, token};
+    return { user, token };
 };
 
 const getUserById = async (id) => {

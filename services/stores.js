@@ -1,79 +1,39 @@
-const notesRepository = require('../repositories/stores');
 const messages = require('../constants/messages');
 const statusCode = require('../constants/statusCodes');
-
-const formatter = new Intl.NumberFormat('en-US', {
-    style: 'currency',
-    currency: 'USD',
-  });
-
+const storeDecorator = require('./decorators');
+const storeRepository = require('../repositories/stores');
 const getAll = async (limit = 10, page) => {
-    page = (page - 1) * 10;
-    
-    const notes = await notesRepository.getAll(+limit, +page);
-    const total = await notesRepository.getCount();
+    const skip = (page - 1) * limit;
 
-    const notesSorted = [];
-    notes.forEach(note => {
-            const noteSorted = {
-            ID: note._id,
-            Comercio: note.name,
-            CUIT: note.cuit,
-            Conceptos: note.concepts,
-            BalanceActual: formatter.format(note.currentBalance),
-            Activo: note.active === true ? 'Si' : 'No',
-            UltimaVenta: note.lastSale.toLocaleString('es-AR'),
-        }
-        notesSorted.push(noteSorted);
-    });
+    const data = await storeDecorator.getAllDecorated(limit, skip);
+    const total = await storeRepository.getCount();
 
-    return {
-        notesSorted,
-        page: page + 1,
-        pages: Math.ceil(total / limit),
-        limit,
-        total
-    };
-}
-
-const create = async (data) => {
-    data.concepts = [];
-    data.lastSale = new Date(data.lastSale).toISOString();
-     data.concepts = [
-        data.concept1,
-        data.concept2,
-        data.concept3,
-        data.concept4,
-        data.concept5,
-        data.concept6
-    ]; 
-
-    delete data.concept1 
-    delete data.concept2 
-    delete data.concept3 
-    delete data.concept4 
-    delete data.concept5 
-    delete data.concept6 
-    
-    const note = await notesRepository.create(data);
-
-    if(!note) {
+    if (!data || !total) {
         const error = new Error(messages.INTERNAL_ERROR);
         error.status = statusCode.INTERNAL_ERROR;
         throw error;
     }
 
-    const noteSorted = {
-        ID: note._id,
-        Comercio: note.name,
-        CUIT: note.cuit,
-        Conceptos: note.concepts,
-        BalanceActual: formatter.format(note.currentBalance),
-        Activo: note.active === true ? 'Si' : 'No',
-        UltimaVenta: note.lastSale.toLocaleString('es-AR'),
+    return {
+        data,
+        page: +page,
+        pages: Math.ceil(total / limit),
+        limit: +limit,
+        total
+    };
+}
+
+const create = async (data) => {
+
+    const store = await storeDecorator.createDecorated(data);
+
+    if (!store) {
+        const error = new Error(messages.INTERNAL_ERROR);
+        error.status = statusCode.INTERNAL_ERROR;
+        throw error;
     }
 
-    return noteSorted;
+    return store;
 }
 
 module.exports = { getAll, create };
