@@ -8,8 +8,8 @@ API realizada como parte del challenge Back End de Koibanx. La misma cuenta con 
 | -----------------  | ------------------------------------------------------ |
 | npm i              | Instalar las dependecias del proyecto                  |
 | mongod             | Conectarse a Mongo localmente                          |
-| nodemon            | Para correr el proyecto en desarrollo                  |
 | npm start          | Para correr el proyecto                                |
+| nodemon            | Para correr el proyecto en desarrollo                  |
 | npm test           | Para ejecutar los test unitarios                       |
   -----------------   ------------------------------------------------------
 ## Como probar la API
