@@ -16,4 +16,4 @@ API realizada como parte del challenge Back End de Koibanx. La misma cuenta con 
 
 La Api fue probada en Postman. Para poder probar la Api se deberá ejecutar el archivo Koibanx.postman_collection.json con Postman.
 Para realizar pedidos a la Api, se deberá ejecutar la ruta POST Login User, la cual nos devolverá un token. El cual copiaremos e insertaremos 
-en los headers en la propiedad Authorization para hacer pedidos a las demas rutas.
+en los headers en la propiedad Authorization para hacer pedidos a las demas rutas. Y así que la Api valide que somos un usuario valido.
